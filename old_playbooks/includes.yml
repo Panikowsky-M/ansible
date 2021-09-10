@@ -1,0 +1,23 @@
+---
+  tasks:
+  - block:
+    - name: Установка Веб-сервера NGINX
+    pacman: name=nginx state=latest
+  
+  - name: Опрос
+    debug:
+    var: msg2
+    notify: Запуск NGINX
+    when: ansible_distribution == "Archlinux"
+  
+  
+  - block:
+    - name: Установка Веб-сервера Apache
+      apt: name=apache2 state=latest
+  
+  - name: Настройка bash
+    vars:
+    s2: ./bashrc
+    d2: /home/tux0/.bashrc
+    copy: src={{ s2 }} dest={{ d2 }} mode=0644
+    when: ansible_distribution == "Ubuntu"

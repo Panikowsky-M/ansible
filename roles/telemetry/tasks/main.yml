@@ -1,0 +1,13 @@
+---
+# tasks file for telemetry
+   - name: Вывод имени администратора узла 
+     debug:
+       msg: "Админ: {{ owner }}"
+
+   - name: Вывод адреса
+     debug:
+       msg: "Адрес IPv4: {{ ansible_all_ipv4_addresses }}"
+
+   - name: Название операционной системы
+     debug:
+       msg: "ОС: {{ ansible_distribution }}"

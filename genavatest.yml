@@ -1,0 +1,7 @@
+---
+- name: Установка genavatar
+  hosts: ub
+  become: yes
+  
+  roles: 
+    - genavatar

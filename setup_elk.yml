@@ -1,0 +1,7 @@
+---
+- name: Подготовка стека elk
+  hosts: ub
+  become: yes
+  
+  roles: 
+    - elk_stack

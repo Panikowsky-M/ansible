@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>Testing ansible automation</title>
+			<script language=JavaScript>
+				var sizes = new Array(0,1,2,3,8,10,12);
+				sizes.pos = 0;
+
+				function Elastic()
+				{
+				   var el = document.all.elastic;
+				   if (null == el.direction)el.direction = 1
+				    else if ((size.pos > size.length-2) || ( 0 == sizes.pos))
+				   el.direction *= -1;
+				   el.style.letterSpacing = sizes[sizes.pos += el.direction ];
+				   setTimeout('Elastic()',100);
+				  }
+					</script>
+        <body onLoad=Elastic()>
+		<center>
+			<br><br><br><br> 
+			<br><br><br><br> 
+			<h2>This webserver configured by</h2>
+			<h1 id=elast align=center>ANSIBLE</h1>
+	</body>
+</html>

@@ -1,0 +1,11 @@
+---
+# tasks file for site_deployer
+- block:
+  - name: Применение шаблона
+    template: src=index.j2 dest={{ d0 }} mode=0555
+    when: ansible_os_family == 'Archlinux'
+  
+  - name: Применение стилей
+    copy: src=styles/style.css dest={{ d1 }} mode=0555
+    copy: src=testpic1.png dest={{ d2 }} mode=0555
+    when: ansible_os_family == 'Archlinux'

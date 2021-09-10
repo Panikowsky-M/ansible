@@ -1,0 +1,5 @@
+---
+# vars file for site_deployer
+    d0: /usr/share/nginx/html/index.html
+    d1: /usr/share/nginx/html/styles/
+    d2: /usr/share/nginx/html/

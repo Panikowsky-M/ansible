@@ -1,0 +1,7 @@
+---
+- name: Проверка соединения
+  hosts: arch
+  become: yes
+
+  roles:
+    - site_deployer

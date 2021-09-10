@@ -1,0 +1,7 @@
+---
+- name: Сбор информации
+  hosts: all
+  become: yes
+
+  roles:
+    - telemetry

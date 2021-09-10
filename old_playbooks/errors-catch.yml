@@ -1,0 +1,19 @@
+---
+- name: Перехват ошибок
+  hosts: arch
+  become: yes
+
+  tasks:
+    - name: Задача №1
+      pacman: name=cowsay state=latest
+
+    - name: Задача №2
+      pacman: name=dooooocker state=latest
+      ignore_errors: yes
+
+    - name: Задача №3
+      pacman: name=sl state=latest
+
+    - name: Задача №4
+      shell: cowsay -p Проверка отлова ошибок
+      register: results

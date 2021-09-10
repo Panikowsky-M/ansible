@@ -1,0 +1,14 @@
+---
+- name: Проверка включений
+  hosts: all
+  become: yes
+
+  handlers:
+    - name: Запуск NGINX
+      service: name=nginx state=restarted enabled=yes
+  
+    - name: Запуск Apache
+      service: name=apache2 state=restarted enabled=yes
+
+  tasks:
+    - include_tasks: includes.yml

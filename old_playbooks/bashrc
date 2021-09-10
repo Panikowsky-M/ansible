@@ -1,0 +1,16 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Полезные экспорты
+export PS2='...'
+
+# Полезные альясы
+alias ls='ls --color=auto'
+alias ip='ip -c'
+alias pacman='pacman --color=auto'
+
+PS1='\[\e[01;36m\]\h \[\e[01;33m\](\[\e[00;34m\]\W\[\e[01;33m\]):\$\[\e[00;37m\] '

@@ -1,0 +1,26 @@
+---
+# tasks file for elk_stack
+- name: Установка curl
+  apt: name=curl
+- name: Установка gnupg
+  apt: name=gnupg
+- name: Установка apt-transport-https
+  apt:
+    name: apt-transport-https
+    update_cache: yes
+- name: Копирования ключа репозитория Elastic
+  ansible.builtin.shell:  wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+- name: Добавление репозитория Elastic
+  ansible.builtin.shell: echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+
+- name: Установка Elasticsearch
+  apt:
+    name: elasticsearch
+    update_cache: yes
+
+- name: Запуск Elasticsearch
+  service: name=elasticsearch state=restarted enabled=yes
+- name: Проверка ...
+  uri:
+    url: http://localhost:9200
+    return_content: true
