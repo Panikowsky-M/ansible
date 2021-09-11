@@ -1,6 +1,6 @@
 ---
 - name: Подготовка стека elk
-  hosts: ub
+  hosts: yc
   become: yes
   
   roles: 

@@ -18,9 +18,50 @@
     name: elasticsearch
     update_cache: yes
 
+- name: Настройка Elasticsearch
+  copy:
+    src: elasticsearch.yml
+    dest: /etc/elasticsearch/
+    owner: root
+    group: root
+    mode: '0644'
 - name: Запуск Elasticsearch
   service: name=elasticsearch state=restarted enabled=yes
 - name: Проверка ...
   uri:
     url: http://localhost:9200
     return_content: true
+
+- name: Добавление репозитория Kibana
+  ansible.builtin.shell: echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-7.x.list
+- name: Установка Kibana
+  apt:
+    name: kibana
+    update_cache: yes
+- name: Настройка Kibana
+  copy:
+    src: kibana.yml
+    dest: /etc/kibana/
+    owner: root
+    group: root
+    mode: '0644'
+- name: Запуск Kibana
+  service: name=kibana state=restarted enabled=yes
+
+- name: Установка Logstash
+  apt:
+    name: logstash
+- name: Настройка Logstash
+  copy:
+    src: '{{item}}'
+    dest: /etc/logstash/conf.d/
+    owner: root
+    group: root
+    mode: '0644'
+  loop:
+    - 10-inputs.conf
+    - 10-outputs.conf
+- name: Запуск Logstash
+  service: name=logstash state=restarted enabled=yes
+- name: Запуск Logstash
+  service: name=logstash state=restarted enabled=yes
